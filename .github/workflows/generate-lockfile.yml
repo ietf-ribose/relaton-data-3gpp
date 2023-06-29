@@ -10,7 +10,15 @@ jobs:
   generate-lockfile:
     runs-on: ubuntu-latest
     steps:
-      - run: bundle install
+      - uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+
+      - run: |
+          bundle config unset --local deployment
+          bundle install
       - run: |
           git add Gemfile.lock
           git config user.name github-actions
