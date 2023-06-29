@@ -8,6 +8,7 @@ on:
   
 jobs:
   generate-lockfile:
+    runs-on: ubuntu-latest
     steps:
       - run: bundle install
       - run: |
